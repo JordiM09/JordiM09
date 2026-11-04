@@ -1,0 +1,158 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 420" width="1200" height="420" role="img" aria-label="jordi@studio — terminal">
+  <defs>
+    <!-- Deep CRT stage -->
+    <radialGradient id="ti-stage" cx="50%" cy="42%" r="70%">
+      <stop offset="0" stop-color="#12181f"/>
+      <stop offset="1" stop-color="#050708"/>
+    </radialGradient>
+
+    <!-- Terminal body fill -->
+    <linearGradient id="ti-body" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#0c1014"/>
+      <stop offset="1" stop-color="#080b0e"/>
+    </linearGradient>
+
+    <!-- Title bar -->
+    <linearGradient id="ti-chrome" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0" stop-color="#1a222b"/>
+      <stop offset="1" stop-color="#12181f"/>
+    </linearGradient>
+
+    <!-- Soft window drop shadow -->
+    <filter id="ti-shadow" x="-12%" y="-12%" width="124%" height="140%">
+      <feGaussianBlur in="SourceAlpha" stdDeviation="18"/>
+      <feOffset dy="12"/>
+      <feComponentTransfer><feFuncA type="linear" slope="0.55"/></feComponentTransfer>
+      <feMerge><feMergeNode/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+
+    <!-- Phosphor glow on live text -->
+    <filter id="ti-glow" x="-20%" y="-40%" width="140%" height="180%">
+      <feGaussianBlur stdDeviation="1.4" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Stronger glow for cursor -->
+    <filter id="ti-cursor-glow" x="-80%" y="-80%" width="260%" height="260%">
+      <feGaussianBlur stdDeviation="2.2" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+
+    <!-- Film grain -->
+    <filter id="ti-grain" x="0" y="0" width="100%" height="100%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.9" numOctaves="2" stitchTiles="stitch" result="noise"/>
+      <feColorMatrix type="matrix" values="0 0 0 0 0.6  0 0 0 0 0.75  0 0 0 0 0.55  0 0 0 0.045 0"/>
+    </filter>
+
+    <!-- Scanlines -->
+    <pattern id="ti-scan" width="4" height="4" patternUnits="userSpaceOnUse">
+      <rect width="4" height="2" fill="#000" opacity="0.18"/>
+    </pattern>
+
+    <!-- Subtle vignette over terminal content -->
+    <radialGradient id="ti-vignette" cx="50%" cy="45%" r="65%">
+      <stop offset="0.55" stop-color="#000" stop-opacity="0"/>
+      <stop offset="1" stop-color="#000" stop-opacity="0.45"/>
+    </radialGradient>
+
+    <!-- Clip terminal content to window -->
+    <clipPath id="ti-clip">
+      <rect x="80" y="40" width="1040" height="340" rx="10"/>
+    </clipPath>
+  </defs>
+
+  <!-- Stage -->
+  <rect width="1200" height="420" fill="url(#ti-stage)"/>
+
+  <!-- Soft ambient glow behind window -->
+  <ellipse cx="600" cy="220" rx="520" ry="160" fill="#3dd68c" opacity="0.04"/>
+
+  <!-- Terminal window -->
+  <g filter="url(#ti-shadow)">
+    <rect x="80" y="40" width="1040" height="340" rx="10" fill="url(#ti-body)" stroke="#2a3540" stroke-width="1"/>
+    <!-- Title bar -->
+    <path d="M90 40 H1110 A10 10 0 0 1 1120 50 V78 H80 V50 A10 10 0 0 1 90 40 Z" fill="url(#ti-chrome)"/>
+    <line x1="80" y1="78" x2="1120" y2="78" stroke="#0a0e12" stroke-width="1"/>
+    <line x1="80" y1="79" x2="1120" y2="79" stroke="#24303a" stroke-width="0.6" opacity="0.5"/>
+  </g>
+
+  <!-- Traffic lights -->
+  <g>
+    <circle cx="106" cy="59" r="6" fill="#ff5f56"/>
+    <circle cx="106" cy="57.5" r="2.2" fill="#ffc8c5" opacity="0.45"/>
+    <circle cx="128" cy="59" r="6" fill="#ffbd2e"/>
+    <circle cx="128" cy="57.5" r="2.2" fill="#ffe6a8" opacity="0.45"/>
+    <circle cx="150" cy="59" r="6" fill="#27c93f"/>
+    <circle cx="150" cy="57.5" r="2.2" fill="#b6f5c0" opacity="0.45"/>
+  </g>
+
+  <!-- Window title -->
+  <text x="600" y="63" text-anchor="middle" font-family="'SF Mono', 'JetBrains Mono', ui-monospace, monospace" font-size="11" fill="#6b7a88" letter-spacing="1.5">jordi@studio — zsh — 120×32</text>
+
+  <!-- Terminal content -->
+  <g clip-path="url(#ti-clip)" font-family="'SF Mono', 'JetBrains Mono', 'Fira Code', ui-monospace, monospace" font-size="13.5">
+
+    <!-- Prompt 1 -->
+    <text x="110" y="110">
+      <tspan fill="#3dd68c" filter="url(#ti-glow)">jordi</tspan><tspan fill="#6b7a88">@</tspan><tspan fill="#39c5cf">studio</tspan><tspan fill="#6b7a88">:</tspan><tspan fill="#7ee787">~</tspan><tspan fill="#e6edf3"> $</tspan><tspan fill="#e6edf3"> whoami</tspan><tspan fill="#6b7a88"> --verbose</tspan>
+    </text>
+    <text x="110" y="132" fill="#e6edf3">↳ Jordi — junior.developer · interactive.media.designer</text>
+    <text x="110" y="150" fill="#6b7a88">  est.2026 · switzerland, lugano</text>
+
+    <!-- Prompt 2 -->
+    <text x="110" y="180">
+      <tspan fill="#3dd68c" filter="url(#ti-glow)">jordi</tspan><tspan fill="#6b7a88">@</tspan><tspan fill="#39c5cf">aboutme</tspan><tspan fill="#6b7a88">:</tspan><tspan fill="#7ee787">~</tspan><tspan fill="#e6edf3"> $</tspan><tspan fill="#e6edf3"> cat</tspan><tspan fill="#ffa657"> now.md</tspan>
+    </text>
+    <text x="110" y="202" fill="#e3b341">## currently</text>
+    <text x="110" y="222"><tspan fill="#6b7a88">-</tspan><tspan fill="#e6edf3"> working at </tspan><tspan fill="#79c0ff">Corriere del Ticino</tspan><tspan fill="#e6edf3"> as a web developer</tspan></text>
+    <text x="110" y="240"><tspan fill="#6b7a88">-</tspan><tspan fill="#e6edf3"> studying as an Interactive Media Designer</tspan></text>
+    <text x="110" y="258"><tspan fill="#6b7a88">-</tspan><tspan fill="#e6edf3"> working on personal projects</tspan></text>
+
+    <!-- Prompt 3 -->
+    <text x="110" y="288">
+      <tspan fill="#3dd68c" filter="url(#ti-glow)">jordi</tspan><tspan fill="#6b7a88">@</tspan><tspan fill="#39c5cf">aboutme</tspan><tspan fill="#6b7a88">:</tspan><tspan fill="#7ee787">~</tspan><tspan fill="#e6edf3"> $</tspan><tspan fill="#e6edf3"> contact</tspan><tspan fill="#6b7a88"> --all</tspan>
+    </text>
+    <text x="110" y="310" fill="#58a6ff" filter="url(#ti-glow)">
+      <tspan>→ jordimlr@protonmail.com</tspan>
+      <tspan dx="28">linkedin/jordi-m</tspan>
+      <tspan dx="28">github/jordiM09</tspan>
+      <tspan dx="28">instagram/jordi.mlr</tspan>
+    </text>
+
+    <!-- Final prompt with cursor -->
+    <text x="110" y="340">
+      <tspan fill="#3dd68c" filter="url(#ti-glow)">jordi</tspan><tspan fill="#6b7a88">@</tspan><tspan fill="#39c5cf">aboutme</tspan><tspan fill="#6b7a88">:</tspan><tspan fill="#7ee787">~</tspan><tspan fill="#e6edf3"> $</tspan>
+    </text>
+    <rect x="252" y="328" width="8" height="14" fill="#3dd68c" filter="url(#ti-cursor-glow)">
+      <animate attributeName="opacity" values="1;1;0;0" keyTimes="0;0.48;0.48;1" dur="1.05s" repeatCount="indefinite"/>
+    </rect>
+  </g>
+
+  <!-- Scanlines + grain + vignette (over content, under chrome edge) -->
+  <g clip-path="url(#ti-clip)" pointer-events="none">
+    <rect x="80" y="78" width="1040" height="302" fill="url(#ti-scan)"/>
+    <rect x="80" y="78" width="1040" height="302" filter="url(#ti-grain)"/>
+    <rect x="80" y="78" width="1040" height="302" fill="url(#ti-vignette)"/>
+  </g>
+
+  <!-- Status / tmux strip -->
+  <g clip-path="url(#ti-clip)">
+    <rect x="80" y="358" width="1040" height="22" fill="#0e141a"/>
+    <line x1="80" y1="358" x2="1120" y2="358" stroke="#1e2832" stroke-width="1"/>
+    <!-- Active session pill -->
+    <rect x="96" y="362" width="72" height="14" rx="2" fill="#1a3d2e"/>
+    <text x="132" y="372" text-anchor="middle" font-family="'SF Mono', 'JetBrains Mono', monospace" font-size="9" fill="#3dd68c">zsh · 0</text>
+    <g font-family="'SF Mono', 'JetBrains Mono', monospace" font-size="10" fill="#5a6a78">
+      <text x="182" y="373">UTF-8</text>
+      <text x="236" y="373">cwd:~</text>
+      <text x="292" y="373">ctrl-l clear</text>
+      <text x="1094" y="373" text-anchor="end" fill="#3dd68c">● connected</text>
+    </g>
+  </g>
+</svg>
